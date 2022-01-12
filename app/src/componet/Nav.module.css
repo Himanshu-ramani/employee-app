@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+.Nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     background: #0081f18e;
+     margin-bottom: 20px;
+     /* font-family: 'The Nautigal', cursive; */
+}
+.heading{
+    font-family: 'Cookie', cursive;
+    margin-left: 50px;
+    font-size: 1.9rem;
+}
+.Nav input{
+    border-radius: 5px;
+    border: 0;
+    margin: 0 10px;
+    font-size: 25px;
+}
+.Nav ul{
+    list-style: none;
+    margin-right: 40px;
+}

@@ -1,0 +1,15 @@
+.cover{
+    /* background-color:w ; */
+    width: 40%;
+    margin: auto;
+    border-radius: 20px;
+    color: #162221;
+    box-shadow: 3px 3px 15px;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.cover div{
+display: grid;
+grid-template-columns: 1fr 1fr;
+margin: 10px ;
+}
