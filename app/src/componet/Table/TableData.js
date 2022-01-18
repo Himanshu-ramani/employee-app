@@ -2,13 +2,14 @@ import Button from "../../UI/Button";
 import { useContext, useEffect, Fragment, useState } from "react";
 import classes from "./TableData.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Data } from "../../App";
 import InLineForm from "../InLineForm/InLineForm";
 import { Search } from "../../App";
 import { SearchData } from "../../App";
+import Expandform from "../ExpandRow/Expandform";
 
 const TableData = (props) => {
   const sreachterm = useContext(Search);
@@ -110,21 +111,21 @@ const TableData = (props) => {
     <tbody>
       {finalArray.map((item) => (
         <Fragment key={item.id}>
-          <tr key={item.id} onClick={(event) => expandHnadler(event, item)}>
+          <tr key={item.id}>
             <td>{item.firstName}</td>
             <td>{item.lastName}</td>
             <td>{item.age}</td>
             <td>{item.number}</td>
             <td>
+              <Button onClick={(event) => expandHnadler(event, item)}>
+                <FontAwesomeIcon icon={faEye} />
+              </Button>
               <Button onClick={(event) => deleteData(event, item.id)}>
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
-              <Button onClick={(event) => handleEdit(event, item)}>
-                <FontAwesomeIcon icon={faEdit} />
-              </Button>
             </td>
           </tr>
-          {viewID === item.id && (
+          {editContactId=== item.id ? <Expandform item={item} /> : viewID === item.id && (
             <tr>
               <td colSpan="6">
                 <div className={classes.head}>
@@ -132,30 +133,31 @@ const TableData = (props) => {
                     {item.firstName} {item.lastName}
                   </h2>
                   <div>
-                    {" "}
                     <button onClick={(event) => handleEdit(event, item)}>
                       <FontAwesomeIcon icon={faEdit} /> Edit
                     </button>
                     <button onClick={stopView}>
-                      <FontAwesomeIcon icon={faUpload} /> up
+                      <FontAwesomeIcon icon={faArrowUp} /> up
                     </button>
                   </div>
                 </div>
                 <div className={classes.expand}>
-                  <p className={classes.label}>FIRST NAME</p>{" "}
+                  <p className={classes.label}>FIRST NAME</p>
                   <p>{item.firstName}</p>
-                  <p className={classes.label}>LAST NAME</p>{" "}
+                  <p className={classes.label}>LAST NAME</p>
                   <p>{item.lastName}</p>
                   <p className={classes.label}>AGE</p> <p>{item.age}</p>
                   <p className={classes.label}>NUMBER</p> <p>{item.number}</p>
                   <p className={classes.label}>EMAIL</p> <p>{item.email}</p>
-                  <p className={classes.label}>DATE OF BIRTH</p>{" "}
+                  <p className={classes.label}>DATE OF BIRTH</p>
                   <p>{item.birth}</p>
+                  <p className={classes.label}>ADDRESS</p>
+                  <p>{item.address}</p>
                 </div>
-                
               </td>
             </tr>
-          )}
+          ) 
+          }
         </Fragment>
       ))}
     </tbody>
