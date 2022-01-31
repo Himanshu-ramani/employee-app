@@ -1,0 +1,8 @@
+.td input{
+    border: 1px solid black;
+    border-radius: 4px;
+    text-align: center;
+}
+.invalid input{
+    border: 1px solid red;
+}
